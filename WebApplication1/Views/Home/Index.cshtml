@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<table border=" 1">
+    <tr>
+        <th width=" 100px">Name</th>
+        <td width=" 100px">Value</td>
+    </tr>
+    <tr>
+        <td>Day</td>
+        <td>@DateTime.Now.Day  </td>
+    </tr>
+    <tr>
+        <td>Hour</td>
+        <td>@DateTime.Now.Hour </td>
+    </tr>
+    <tr>
+        <td>Minute</td>
+        <td>@DateTime.Now.Minute  </td>
+    </tr>
+    <tr>
+        <td>Second</td>
+        <td>@DateTime.Now.Second </td>
+    </tr>
+</table>
+<ul>
+    @for (var i = 1; i <= 20; i++)
+    {
+        <li>Line @i</li>
+    }
+
+</ul>
+<ol>
+    @foreach (var d in Request.ServerVariables)
+    {
+                <li>@d</li>
+    }
+
+</ol>
+@{ 
+    var j = 0;
+    while (j < 5)
+    {
+        <p>@j</p>
+        j++;
+    }
+}
+@{ 
+    string[] member = { "Lina", "Dara", "kai" };
+    int position = Array.IndexOf(member, "kai") + 1;
+    int len = member.Length;
+}
+@foreach (var named in member)
+{
+                <p>@named  </p>
+}
+<p>kai is at Position @position  </p>
+<p>Total Member=@len</p>
+@{ 
+    var price = 50; }
+    @if (price > 30)
+    {
+                <p>The price is too hight.</p>
+    }
+    @{ 
+        var prices = 20; }
+        @if (prices>30)
+            {
+                <p> The prices is too hight.</p>
+            }
+        else
+            {
+                <p>  The prices is ok.</p>
+            }
+@{ 
+    var weekday = DateTime.Now.DayOfWeek;
+    var day = weekday.ToString();
+    var message = "";
+}
+@switch (day)
+{
+    case "Monday":
+        message = "This is the first day of the weekday.";
+        break;
+    case "Thursday":
+        message = "Two more day before weedend.";
+        break;
+    case "Sunday":
+        message = "Weekend!";
+        break;
+    case "Saturday":
+        message = " Tomorrow is Weekend!";
+        break;
+    default:
+        message = "Today is" + day;
+        break;
+        <p>@message  </p>
+}
+
